@@ -24,7 +24,7 @@ if(__name__ == '__main__'):
 
     # Retrieve the paramaters sent by the user
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument("-strategy", default='TDQN', type=str, help="Name of the trading strategy")
+    parser.add_argument("-strategy", default='PFRL_DQN', type=str, help="Name of the trading strategy")
     parser.add_argument("-stock", default='Apple', type=str, help="Name of the stock (market)")
     args = parser.parse_args()
     

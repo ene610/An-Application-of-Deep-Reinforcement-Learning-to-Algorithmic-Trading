@@ -28,8 +28,8 @@ register_matplotlib_converters()
 from tradingEnv import TradingEnv
 from tradingPerformance import PerformanceEstimator
 from timeSeriesAnalyser import TimeSeriesAnalyser
-from TDQN import TDQN
-
+#from TDQN import TDQN
+from PFRL_parassita import PFRL_parassita
 
 
 ###############################################################################
@@ -56,7 +56,7 @@ money = 100000
 # Variables specifying the default general training parameters
 bounds = [1, 30]
 step = 1
-numberOfEpisodes = 50
+numberOfEpisodes = 10
 
 # Dictionary listing the fictive stocks supported
 fictives = {
@@ -148,7 +148,7 @@ strategies = {
 
 # Dictionary listing the AI trading strategies supported
 strategiesAI = {
-    'TDQN' : 'TDQN'
+    "PFRL_DQN" : "PFRL_parassita"
 }
 
 
@@ -409,6 +409,7 @@ class TradingSimulator:
         if ai:
             strategyModule = importlib.import_module(str(strategy))
             className = getattr(strategyModule, strategy)
+            print(className)
             tradingStrategy = className(observationSpace, actionSpace)
         else:
             strategyModule = importlib.import_module('classicalStrategy')
